@@ -1,53 +1,58 @@
 <template>
   <div class="low-code-platform">
-    <div class="left-panel">
-      <p>组件列表:</p>
-      <draggable-item
-        v-for="item in components"
-        :key="item.type"
-        :component="item"
-        @dragstart="handleDragStart($event, item)"
-      />
+    <div>
+      <p class="title">组件列表:</p>
+      <div class="left-panel">
+        <draggable-item
+          v-for="item in components"
+          :key="item.type"
+          :component="item"
+          @dragstart="handleDragStart($event, item)"
+        />
+      </div>
     </div>
 
-    <div
-      class="right-panel"
-      ref="visualArea"
-      @dragover.prevent
-      @dragenter.prevent
-      @drop="handleDrop"
-    >
-      <component-item
-        v-for="(item, index) in items"
-        :key="index"
-        :item="item"
-        :index="index"
-        @update-item="updateItem"
-        @remove-item="removeItem"
-      />
-    </div>
-    <div class="button-container">
-      <button class="reset-button" @click="reset">重置</button>
-      <button class="save-button" @click="save">保存</button>
+    <div>
+      <p class="title">组件区:</p>
+      <div
+        class="right-panel"
+        ref="visualArea"
+        @dragover.prevent
+        @dragenter.prevent
+        @drop="handleDrop"
+      >
+        <component-item
+          v-for="(item, index) in items"
+          :key="index"
+          :item="item"
+          :index="index"
+          @update-item="updateItem"
+          @remove-item="removeItem"
+        />
+      </div>
+      <div class="button-container">
+        <button class="reset-button" @click="reset">重置</button>
+        <button class="save-button" @click="save">保存</button>
+      </div>
     </div>
 
-    <div class="json-display">
-      <p>JSON 数据展示区:</p>
-      <pre>{{ jsonValue }}</pre>
-      <!-- <Vue3JsonEditor v-model="jsonValue" /> -->
+    <div>
+      <p class="title">JSON 数据展示区:</p>
+      <div class="json-display">
+        <pre>{{ jsonValue }}</pre>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, watch } from "vue";
-import { Vue3JsonEditor } from "vue3-json-editor";
 import DraggableItem from "./DraggableItem.vue";
 import ComponentItem from "./ComponentItem.vue";
 
 const components = [
-  { type: "text", label: "文本类型" },
-  { type: "square", label: "矩形" },
+  { type: "text", label: "文本/输入框" },
+  { type: "square", label: "矩形框" },
   { type: "barcode", label: "一维码" },
 ];
 const items = ref([]);
@@ -115,6 +120,9 @@ const save = () => {
 </script>
 
 <style scoped>
+.title {
+  font-size: 22px;
+}
 .low-code-platform {
   display: flex;
   flex-direction: row;
@@ -137,12 +145,13 @@ const save = () => {
 
 .left-panel {
   min-width: 200px;
+  height: 500px;
 }
 
 .right-panel {
   position: relative;
-  width: 800px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
 }
 
 .button-container {
@@ -185,68 +194,11 @@ button {
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 4px;
-  min-width: 200px;
+  min-width: 300px;
+  height: 500px;
   max-height: 600px;
   overflow-y: auto;
   white-space: pre-wrap;
-  background-color: #f5f5f5;
-}
-
-/* JSON 编辑器样式 */
-.json-editor :deep(.vjs-container) {
-  font-family: "Roboto", sans-serif;
-  color: #333;
-  background-color: #f0f0f0;
-}
-
-/* 菜单栏样式 */
-.json-editor :deep(.vjs-btn) {
-  background-color: #2a6aa1;
-  color: #fff;
-  border: 1px solid #1f4d75;
-  border-radius: 4px;
-}
-
-.json-editor :deep(.vjs-btn:hover) {
-  background-color: #1f4d75;
-}
-
-/* JSON 编辑器内容区域 */
-.json-editor :deep(.vjs-content) {
-  background-color: #f5f5f5;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-/* 括号、逗号、冒号样式 */
-.json-editor :deep(.vjs-bracket),
-.json-editor :deep(.vjs-comma),
-.json-editor :deep(.vjs-colon) {
-  color: #666;
-}
-
-/* 属性名称样式 */
-.json-editor :deep(.vjs-property) {
-  color: #a61d24;
-}
-
-/* 属性值 - 字符串 */
-.json-editor :deep(.vjs-string) {
-  color: #1a8c1a;
-}
-
-/* 属性值 - 数字 */
-.json-editor :deep(.vjs-number) {
-  color: #1c00cf;
-}
-
-/* 属性值 - 布尔值 */
-.json-editor :deep(.vjs-boolean) {
-  color: #aa3e00;
-}
-
-/* 属性值 - 空值 */
-.json-editor :deep(.vjs-null) {
-  color: #808080;
+  background-color: white;
 }
 </style>
