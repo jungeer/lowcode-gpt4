@@ -121,8 +121,12 @@ const save = () => {
 
 <style scoped>
 .title {
-  font-size: 22px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10px;
 }
+
 .low-code-platform {
   display: flex;
   flex-direction: row;
@@ -130,26 +134,29 @@ const save = () => {
   align-items: flex-start;
   padding: 20px;
   gap: 20px;
-  font-family: "Arial", sans-serif;
-  background-color: #f5f5f5;
+  font-family: "Roboto", "Arial", sans-serif;
+  background-color: #ecf0f1;
 }
 
 .left-panel,
 .right-panel {
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 4px;
+  border-radius: 6px;
   background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .left-panel {
-  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  min-width: 250px;
+  padding: 20px;
   height: 500px;
 }
 
 .right-panel {
   position: relative;
+  padding: 20px;
   width: 500px;
   height: 500px;
 }
@@ -158,47 +165,50 @@ const save = () => {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   margin-top: 20px;
 }
 
 button {
   cursor: pointer;
   font-size: 16px;
+  font-weight: bold;
   padding: 10px 20px;
-  border-radius: 4px;
+  border-radius: 30px;
   border: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
 .reset-button {
-  background-color: #f44336;
+  background-color: #e74c3c;
   color: #ffffff;
 }
 
 .reset-button:hover {
-  background-color: #e5380e;
+  background-color: #c0392b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .save-button {
-  background-color: #4caf50;
+  background-color: #2ecc71;
   color: #ffffff;
 }
 
 .save-button:hover {
-  background-color: #43a047;
+  background-color: #27ae60;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .json-display {
-  border: 1px solid #ccc;
+  border-radius: 6px;
   padding: 20px;
-  border-radius: 4px;
-  min-width: 300px;
+  min-width: 250px;
   height: 500px;
   max-height: 600px;
   overflow-y: auto;
   white-space: pre-wrap;
   background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 </style>

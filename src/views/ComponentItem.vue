@@ -128,7 +128,8 @@ onUnmounted(() => {
 .square {
   border: 1px solid #ededed;
   /* background-color: rgba(255, 255, 255, 0.3); */
-  background-color: #2c3e50;
+  /* background-color: #2c3e50; */
+  background-color: #ecf0f1;
   width: 100%;
   height: 100%;
   position: relative;
